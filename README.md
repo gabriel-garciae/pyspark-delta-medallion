@@ -205,22 +205,27 @@ This approach was used instead of programmatic upload for simplicity in the deve
 
 Execute the following steps in order to build the complete pipeline:
 
-**Data preparation**:
+### Data preparation
+
 0. Upload CSV files to DBFS via Databricks UI "Add Data" feature (files will be stored in `dbfs:/FileStore/tables/`)
 
-**Initial setup**:
+### Initial setup
+
 1. `scripts.ipynb` - configures schemas and directories
 
-**Bronze layer** (ingestion):
+### Bronze layer (ingestion)
+
 2. `bronze/beverage_sales.ipynb` - loads sales data
 3. `bronze/beverage_channel_group.ipynb` - loads channel data
 
-**Silver layer** (transformation):
+### Silver layer (transformation)
+
 4. `silver/dim_brand.ipynb` - creates brand dimension
 5. `silver/dim_channel.ipynb` - creates channel dimension
 6. `silver/fact_sales.ipynb` - creates enriched fact table
 
-**Gold layer** (aggregation):
+### Gold layer (aggregation)
+
 7. `gold/4.1_top3_tradegroup_region.ipynb` - top 3 groups by region
 8. `gold/4.2_sales_by_brand_month.ipynb` - sales by brand and month
 9. `gold/4.3_lowest_brand_by_region.ipynb` - lowest brand by region
